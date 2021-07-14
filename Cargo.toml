@@ -1,0 +1,29 @@
+[package]
+name = "rustc_codegen_lua"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+crate-type = ["dylib"]
+
+[profile.dev]
+# By compiling dependencies with optimizations, performing tests gets much faster.
+opt-level = 3
+
+[profile.dev.package.rustc_codegen_lua]
+# Disabling optimizations for cg_lua itself makes compilation after a change faster.
+opt-level = 0
+
+[profile.release.package.rustc_codegen_lua]
+incremental = true
+
+[profile.dev.build-override]
+opt-level = 0
+debug = false
+
+[profile.release.build-override]
+opt-level = 0
+debug = false
+
+[package.metadata.rust-analyzer]
+rustc_private = true
