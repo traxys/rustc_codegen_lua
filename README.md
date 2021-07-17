@@ -8,6 +8,7 @@ All the scaffolding for building a codegen backend is taken from [rustc_codegen_
 
 To build the backend you can do 
 ```
+rustup component add --toolchain nightly rust-src rustc-dev llvm-tools-preview
 ./y.rs prepare
 ./y.rs build
 ```

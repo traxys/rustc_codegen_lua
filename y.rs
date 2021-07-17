@@ -91,8 +91,7 @@ fn main() {
 
     let mut target_dir = PathBuf::from("build");
     let mut channel = "release";
-    //let mut sysroot_kind = SysrootKind::Lua;
-    let mut sysroot_kind = SysrootKind::Llvm;
+    let mut sysroot_kind = SysrootKind::Lua;
     while let Some(arg) = args.next().as_deref() {
         match arg {
             "--target-dir" => {

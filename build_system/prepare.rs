@@ -110,7 +110,7 @@ fn clone_repo(target_dir: &str, repo: &str, rev: &str) {
 
 fn get_patches(crate_name: &str) -> Vec<OsString> {
     let mut patches: Vec<_> = fs::read_dir("patches")
-        .expect("no patches dir")
+        .expect("no patches dir, please `mkdir patches`")
         .map(|entry| entry.unwrap().path())
         .filter(|path| path.extension() == Some(OsStr::new("patch")))
         .map(|path| path.file_name().unwrap().to_owned())
