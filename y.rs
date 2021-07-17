@@ -7,7 +7,7 @@ rustc $0 -o ${0/.rs/.bin} -g
 exec ${0/.rs/.bin} $@
 */
 
-//! The build system for cg_clif
+//! The build system for cg_lua
 //!
 //! # Manual compilation
 //!
@@ -43,7 +43,7 @@ mod utils;
 fn usage() {
     eprintln!("Usage:");
     eprintln!("  ./y.rs prepare");
-    eprintln!("  ./y.rs build [--debug] [--sysroot none|clif|llvm] [--target-dir DIR]");
+    eprintln!("  ./y.rs build [--debug] [--sysroot none|lua|llvm] [--target-dir DIR]");
 }
 
 macro_rules! arg_error {
@@ -72,7 +72,7 @@ fn main() {
     env::set_var("CARGO_TARGET_DIR", "target");
 
     let mut args = env::args().skip(1);
-    let command = match args.next().as_deref() {
+    let _command = match args.next().as_deref() {
         Some("prepare") => {
             if args.next().is_some() {
                 arg_error!("./x.rs prepare doesn't expect arguments");
@@ -104,7 +104,7 @@ fn main() {
             "--sysroot" => {
                 sysroot_kind = match args.next().as_deref() {
                     Some("none") => SysrootKind::None,
-                    Some("clif") => SysrootKind::Lua,
+                    Some("lua") => SysrootKind::Lua,
                     Some("llvm") => SysrootKind::Llvm,
                     Some(arg) => arg_error!("Unknown sysroot kind {}", arg),
                     None => arg_error!("--sysroot requires argument"),

@@ -5,7 +5,7 @@ use std::fs;
 use std::path::Path;
 use std::process::Command;
 
-use crate::rustc_info::{get_file_name, get_rustc_path, get_rustc_version};
+use crate::rustc_info::{/*get_file_name,*/ get_rustc_path, get_rustc_version};
 use crate::utils::{copy_dir_recursively, spawn_and_wait};
 
 pub(crate) fn prepare() {
