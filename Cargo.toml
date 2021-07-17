@@ -27,3 +27,6 @@ debug = false
 
 [package.metadata.rust-analyzer]
 rustc_private = true
+
+[workspace]
+members = [".", "cglua"]
